@@ -1,8 +1,15 @@
 #include"shell.h"
 /**
- * handle_command - Handle the input command, including built-in commands
- * @input: User input command
+ * MAX_ARGUMENTS - Function that calculates the maximum of two arguments.
+ *
+ * This function takes two input values and returns the maximum of the two.
+ *
+ * @param input1: The first input value.
+ * @param input2: The second input value.
+ *
+ * @return: The maximum of input1 and input2.
  */
+
 #define MAX_ARGUMENTS 10
 void handle_command(char *input)
 {
@@ -26,7 +33,6 @@ void handle_command(char *input)
 	}
 	else
 	{
-		
 		while (token != NULL && arg_count < MAX_ARGUMENTS - 1)
 		{
 			arguments[arg_count++] = token;

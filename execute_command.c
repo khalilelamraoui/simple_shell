@@ -13,7 +13,8 @@ void execute_command(char *arguments[])
 		child_pid = fork();
 		if (child_pid == -1)
 			perror("fork");
-		else if (child_pid == 0) {
+		else if (child_pid == 0)
+		{
 			if (execvp(arguments[0], arguments) == -1)
 			{
 				perror("execvp");

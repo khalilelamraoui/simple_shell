@@ -5,7 +5,8 @@
  * Return: 0 on successful completion
  */
 #define MAX_COMMAND_LENGTH 100
-int main() {
+int main(void)
+{
 	char input[MAX_COMMAND_LENGTH];
 
 	while (1)

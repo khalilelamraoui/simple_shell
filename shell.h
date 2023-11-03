@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 /**
  * execute_command - Execute the command using fork and execvp
  * @arguments: Array containing command and arguments

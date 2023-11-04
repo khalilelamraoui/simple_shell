@@ -34,3 +34,5 @@ $
 Handle errors.`<br>
 `->Handles the “end of file” condition (Ctrl+D)`<br>
 
+###Tasks to be done:
+**handle the PATH**

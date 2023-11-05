@@ -8,7 +8,7 @@
 #define MAX_COMMAND_LENGTH 100
 
 void display_prompt() {
-    printf("simple_shell$ ");
+    printf("$ ");
 }
 
 void execute_command(char *command) {

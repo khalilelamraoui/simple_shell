@@ -70,4 +70,4 @@ Handle errors.`<br>
 <hr>
 
 ### Tasks to be done:<br>
-**handle the PATH**
+-[ ] **handle the PATH**

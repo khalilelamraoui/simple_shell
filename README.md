@@ -34,6 +34,7 @@ $
 Handle errors.`<br>
 `->Handles the “end of file” condition (Ctrl+D)`<br>
 <hr>
+    
 ### Functions and System Calls
 - access (man 2 access)<br>
 - chdir (man 2 chdir)<br>
@@ -67,5 +68,6 @@ Handle errors.`<br>
 - wait4 (man 2 wait4)<br>
 - write (man 2 write)<br>
 <hr>
-###Tasks to be done:<br>
+
+### Tasks to be done:<br>
 **handle the PATH**

@@ -71,3 +71,4 @@ Handle errors.`<br>
 
 ### Tasks to be done:<br>
 - [ ] **handle the PATH**
+- [x] **modified shell functions**

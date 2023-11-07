@@ -11,7 +11,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("Myshell ");
+		printf("MyShell ");
 		if (fgets(input, sizeof(input), stdin) == NULL)
 		{
 			if (feof(stdin))

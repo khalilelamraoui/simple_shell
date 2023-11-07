@@ -9,9 +9,11 @@
  */
 
 #define MAX_ARGUMENTS 10
+
+extern char **environ;
+
 void handle_command(char *input)
 {
-	char **environ;
 	char **env = environ, *arguments[MAX_ARGUMENTS];
 	char *token = strtok(input, " ");
 	int arg_count = 0;

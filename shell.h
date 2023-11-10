@@ -22,4 +22,4 @@ void execute_command(char *arguments[]);
  */
 void handle_command(char *input);
 
-#endif
+#endif /*SHELL_H*/

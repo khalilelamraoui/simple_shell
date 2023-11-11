@@ -57,6 +57,46 @@ void read_command(char *command) {
     }
 }
 
+ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream)
+{
+	static char buffer[BUFFER_SIZE];
+	static ssize_t buffer_index = 0;
+	static ssize_t buffer_size = 0;
+	size_t i = 0;
+
+	/* Initialize the buffer*/
+	if (buffer_index >= buffer_size || buffer_size == 0)
+	{
+        	buffer_size = read(fileno(stream), buffer, BUFFER_SIZE);
+        	if (buffer_size <= 0)
+		{
+			/* End of file or error */
+			return buffer_size;
+		}
+		buffer_index = 0;
+	}
+	if (*lineptr == NULL || *n == 0)
+	{
+		*n = BUFFER_SIZE;
+		*lineptr = (char *)malloc(*n);
+		if (*lineptr == NULL)
+		{
+			perror("Memory allocation error");
+			exit(EXIT_FAILURE);
+		}
+	}
+	while (buffer_index < buffer_size && buffer[buffer_index] != '\n')
+	{
+		(*lineptr)[i++] = buffer[buffer_index++];
+	}
+	(*lineptr)[i] = '\0';
+	if (buffer_index < buffer_size && buffer[buffer_index] == '\n')
+	{
+		buffer_index++;
+	}
+	return i;
+}
+
 int main() {
     char command[MAX_COMMAND_LENGTH];
 

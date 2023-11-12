@@ -73,3 +73,4 @@ Handle errors.`<br>
 - [ ] **handle the PATH**
 - [x] **modified shell functions**
 - [ ] **Handle getline function**
+- [ ] **handle arguments for the built-in exit**

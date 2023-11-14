@@ -6,14 +6,16 @@
  */
 void tokenize_command(char *command, char *args[])
 {
-	char *token = strtok(command, " ");
+	char *token;
 	int i = 0;
 
-	while (token != NULL)
+	while ((token = strsep(&command, " ")) != NULL)
 	{
-		args[i] = token;
-		i++;
-		token = strtok(NULL, " ");
+		if (*token != '\0')
+		{
+			args[i] = token;
+			i++;
+		}
 	}
 	args[i] = NULL;
 }

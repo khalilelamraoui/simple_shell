@@ -1,30 +1,37 @@
 #include"shell.h"
 /**
- * execute_command - Execute the command using fork and execvp
- * @arguments: Array containing command and arguments
+ * execute_command - Execute the given command.
+ * @command: The command to execute.
  */
-void execute_command(char *arguments[])
+void execute_command(char *command)
 {
-	pid_t child_pid;
-	int status;
+	char *args[MAX_COMMAND_LENGTH];
+	pid_t pid;
 
-	if (access(arguments[0], X_OK) != -1)
+	if (strncmp(command, "cd", 2) == 0)
 	{
-		child_pid = fork();
-		if (child_pid == -1)
-			perror("fork");
-		else if (child_pid == 0)
-		{
-			if (execvp(arguments[0], arguments) == -1)
-			{
-				perror("execvp");
-				exit(EXIT_FAILURE);
-			}
-		}
-		else
-			waitpid(child_pid, &status, 0);
+		tokenize_command(command, args);
+		change_directory(args[1]);
 	}
 	else
-		printf("Command not found or not executable: %s\n",
-				arguments[0]);
+	{
+		tokenize_command(command, args);
+		pid = fork();
+		if (pid < 0)
+		{
+			perror("Fork failed");
+			exit(EXIT_FAILURE);
+		}
+		else if (pid == 0)
+		{
+			if (execvp(args[0], args) == -1)
+			{
+				perror("Error");
+				exit(EXIT_FAILURE);
+			}
+			exit(EXIT_SUCCESS);
+		}
+		else
+			wait(NULL);
+	}
 }

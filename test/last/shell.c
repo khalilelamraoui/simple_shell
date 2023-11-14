@@ -69,49 +69,46 @@ void change_directory(char *directory) {
 }
 
 void execute_command(char *command) {
-    char *commands[MAX_COMMAND_LENGTH];
-    int i = 0;
+    if (strncmp(command, "cd", 2) == 0) {
+        /* Handle cd command */
+        char *args[MAX_COMMAND_LENGTH];
+        int i = 0;
 
-    char *token = strtok(command, ";");
-    while (token != NULL) {
-        commands[i] = token;
-        i++;
-        token = strtok(NULL, ";");
-    }
+        char *token = strtok(command, " ");
+        while (token != NULL) {
+            args[i] = token;
+            i++;
+            token = strtok(NULL, " ");
+        }
+        args[i] = NULL;
 
-    for (int j = 0; j < i; j++) {
-        char *current_command = commands[j];
-        // Execute the current command
-        if (strncmp(current_command, "cd", 2) == 0) {
-            // Handle cd command
-            change_directory(current_command + 2); // Skip "cd" in the command
-        } else {
-            // Execute other commands
-            char *args[MAX_COMMAND_LENGTH];
-            int k = 0;
-            pid_t pid;
+        change_directory(args[1]);
+    } else {
+        /* Execute other commands */
+        char *args[MAX_COMMAND_LENGTH];
+        int i = 0;
+        pid_t pid;
 
-            char *token = strtok(current_command, " ");
-            while (token != NULL) {
-                args[k] = token;
-                k++;
-                token = strtok(NULL, " ");
-            }
-            args[k] = NULL;
+        char *token = strtok(command, " ");
+        while (token != NULL) {
+            args[i] = token;
+            i++;
+            token = strtok(NULL, " ");
+        }
+        args[i] = NULL;
 
-            pid = fork();
-            if (pid < 0) {
-                perror("Fork failed");
+        pid = fork();
+        if (pid < 0) {
+            perror("Fork failed");
+            exit(EXIT_FAILURE);
+        } else if (pid == 0) {
+            if (execvp(args[0], args) == -1) {
+                perror("Error");
                 exit(EXIT_FAILURE);
-            } else if (pid == 0) {
-                if (execvp(args[0], args) == -1) {
-                    perror("Error");
-                    exit(EXIT_FAILURE);
-                }
-                exit(EXIT_SUCCESS);
-            } else {
-                wait(NULL);
             }
+            exit(EXIT_SUCCESS);
+        } else {
+            wait(NULL);
         }
     }
 }

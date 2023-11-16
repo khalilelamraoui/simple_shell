@@ -32,6 +32,5 @@ ssize_t concatenate_strings(int count, char **result, ...) {
     }
 
     (*result)[length] = '\0';
-	free(*result);
     return 0;
 }

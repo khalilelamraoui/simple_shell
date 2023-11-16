@@ -36,5 +36,4 @@ void process_command(char **command_tokens, char **environment, char *executable
     {
         perror("fork");
     }
-	free(executable_path);
 }

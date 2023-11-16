@@ -31,7 +31,5 @@ char *get_executable_path(char *command, char **environment) {
     }
     free(env_copy);
     free(parsed_env);
-	free(env_copy);
-    free(parsed_env);
     return NULL;
 }

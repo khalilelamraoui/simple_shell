@@ -13,6 +13,5 @@ char *copy_n_string(char *destination, char *source, int n) {
         destination[index] = '\0';
         index++;
     }
-	free(destination);
     return destination;
 }

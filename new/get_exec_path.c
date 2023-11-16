@@ -19,7 +19,7 @@ char *get_executable_path(char *command, char **environment) {
 
         parsed_env = split_string(env_copy, ":");
         while (parsed_env[i]) {
-            nconcat(3, &path, parsed_env[i], "/", command);
+            concatenate_strings(3, &path, parsed_env[i], "/", command);
             if (stat(path, &cstat) == 0) {
                 free(parsed_env);
                 free(env_copy);

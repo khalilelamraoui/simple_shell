@@ -30,7 +30,6 @@ int count_delimiters(char *str, char *delim);
 void process_command(char **command_tokens, char **environment, char *executable_path, char *input_line);
 /* Other functions */
 int get_num_delim(char *str, char *delim);
-ssize_t nconcat(int n, char **strcat, ...);
 void print_error(char *argv, char *cmd);
 void free_alloc(int n, char *alloc1, ...);
 void handle_cmd(char **tokens, char **envp, char *cmd_exec, char *line);

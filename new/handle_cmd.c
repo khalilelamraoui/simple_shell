@@ -8,11 +8,11 @@ void handle_command(char **tokens, char **environment, char *cmd_exec, char *lin
         free(tokens);
         free(line);
     } else {
-        tokens[0] = realloc(tokens[0], _strlen(cmd_exec) + 1);
+        tokens[0] = realloc(tokens[0], string_length(cmd_exec) + 1);
         if (tokens[0] == NULL) {
             perror("realloc");
         }
-        tokens[0] = _strcpy(tokens[0], cmd_exec);
+        tokens[0] = copy_string(tokens[0], cmd_exec);
         execute_command(tokens, environment, line);
         free(tokens[0]);
         free(tokens);

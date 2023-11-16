@@ -8,7 +8,7 @@ int main(int __attribute__((unused)) arg_count, char **arguments, char **environ
 
     while (1) {
         if (isatty(STDIN_FILENO) != 0) {
-            write(STDOUT_FILENO, prompt, _strlen(prompt));
+            write(STDOUT_FILENO, prompt, string_length(prompt));
         }
         input_line = NULL;
         read_line(&input_line, line_size);

@@ -15,7 +15,7 @@ ssize_t custom_getline(char **input, size_t *size, FILE *stream) {
         if (*input == NULL) {
             return -1;
         }
-        _strncpy(*input, buffer, read_size);
+        copy_n_string(*input, buffer, read_size);
         (*input)[read_size - 1] = '\0';
         return read_size - 1;
     } else {
@@ -25,7 +25,7 @@ ssize_t custom_getline(char **input, size_t *size, FILE *stream) {
             if (*input == NULL) {
                 return -1;
             }
-            *input = _strncpy(*input + (*size - read_size), buffer, read_size);
+            *input = copy_n_string(*input + (*size - read_size), buffer, read_size);
             if (buffer[read_size - 1] == '\n') {
                 break;
             }

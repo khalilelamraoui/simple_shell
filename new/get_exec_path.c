@@ -14,11 +14,11 @@ char *get_executable_path(char *command, char **environment) {
         return NULL;
     } else {
         env = _getenv(environment, "PATH=", 5);
-        env_copy = malloc(_strlen(env) + 1);
+        env_copy = malloc(_string_length(env) + 1);
         if (env_copy == NULL) {
             return NULL;
         }
-        env_copy = _strcpy(env_copy, env);
+        env_copy = copy_string(env_copy, env);
 
         parsed_env = split(env_copy, ":");
         while (parsed_env[index]) {

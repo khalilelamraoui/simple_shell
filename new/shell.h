@@ -41,6 +41,8 @@ int compare_strings(char *string1, char *string2);
 int string_length(char *string);
 /* Concatenate multiple strings */
 ssize_t concatenate_strings(int count, char **result, ...);
+int count_delimiters(char *str, char *delim);
+void process_command(char **command_tokens, char **environment, char *executable_path, char *input_line);
 /* Other functions */
 int get_num_delim(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
@@ -51,6 +53,5 @@ ssize_t nconcat(int n, char **strcat, ...);
 void print_error(char *argv, char *cmd);
 void free_alloc(int n, char *alloc1, ...);
 void handle_cmd(char **tokens, char **envp, char *cmd_exec, char *line);
-char *_getenv(char **envp, char *var, unsigned int n)
-
+char *_getenv(char **envp, char *var, unsigned int length);
 #endif

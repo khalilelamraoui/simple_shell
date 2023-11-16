@@ -12,7 +12,7 @@ int main(int __attribute__((unused)) arg_count, char **arguments, char **environ
         }
         input_line = NULL;
         read_line(&input_line, line_size);
-        command_tokens = split(input_line, " ");
+        command_tokens = split_string(input_line, " ");
         exit_shell(command_tokens, input_line);
 
         executable_path = get_executable_path(command_tokens[0], environment);

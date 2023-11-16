@@ -1,14 +1,11 @@
 #include"shell.h"
-/**
- * Get the executable path for the given command.
- */
 char *get_executable_path(char *command, char **environment) {
-    int index = 0;
+    int i = 0;
     char *path, *env, *env_copy, **parsed_env;
-    struct stat command_stat;
+    struct stat cstat;
 
     if (*command == '/') {
-        if (stat("/bin/ls", &command_stat) == 0) {
+        if (stat("/bin/ls", &cstat) == 0) {
             return command;
         }
         return NULL;
@@ -20,16 +17,16 @@ char *get_executable_path(char *command, char **environment) {
         }
         env_copy = copy_string(env_copy, env);
 
-        parsed_env = split(env_copy, ":");
-        while (parsed_env[index]) {
-            nconcat(3, &path, parsed_env[index], "/", command);
-            if (stat(path, &command_stat) == 0) {
+        parsed_env = split_string(env_copy, ":");
+        while (parsed_env[i]) {
+            nconcat(3, &path, parsed_env[i], "/", command);
+            if (stat(path, &cstat) == 0) {
                 free(parsed_env);
                 free(env_copy);
                 return path;
             }
             free(path);
-            index++;
+            i++;
         }
     }
     free(env_copy);

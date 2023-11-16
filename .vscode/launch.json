@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/khali/simple_shell",
-      "program": "c:/Users/khali/simple_shell/build/Debug/outDebug",
+      "cwd": "c:/Users/khali/OneDrive/Desktop/test/simple_shell",
+      "program": "c:/Users/khali/OneDrive/Desktop/test/simple_shell/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -11,7 +11,7 @@ char *get_executable_path(char *command, char **environment) {
         return NULL;
     } else {
         env = _getenv(environment, "PATH=", 5);
-        env_copy = malloc(_string_length(env) + 1);
+        env_copy = malloc(string_length(env) + 1);
         if (env_copy == NULL) {
             return NULL;
         }

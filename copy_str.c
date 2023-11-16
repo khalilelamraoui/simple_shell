@@ -10,5 +10,6 @@ char *copy_string(char *destination, char *source) {
         index++;
     }
     *(destination + index) = '\0';
+	free(destination);
     return destination;
 }

@@ -74,3 +74,5 @@ Handle errors.`<br>
 - [x] **modified shell functions**
 - [ ] **Handle getline function**
 - [ ] **handle arguments for the built-in exit**
+- [ ] **Handling memory leaks**
+- [x] **using valgrind to chec errors**

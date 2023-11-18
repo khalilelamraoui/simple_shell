@@ -70,9 +70,9 @@ Handle errors.`<br>
 <hr>
 
 ### Tasks to be done:<br>
-- [ ] **handle the PATH**
+- [x] **handle the PATH**
 - [x] **modified shell functions**
-- [ ] **Handle getline function**
-- [ ] **handle arguments for the built-in exit**
+- [x] **Handle getline function**
+- [x] **handle arguments for the built-in exit**
 - [ ] **Handling memory leaks**
 - [x] **using valgrind to chec errors**
